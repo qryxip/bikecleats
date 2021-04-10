@@ -1,0 +1,27 @@
+[package]
+name = "bikecleats_judge"
+version = "0.0.0"
+edition = "2018"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "Tools for competitive programming."
+repository = "https://github.com/qryxip/bikecleats"
+documentation = "https://docs.rs/bikecleats_judge"
+keywords = []
+categories = ["command-line-utilities"]
+publish = false
+
+[dependencies]
+anyhow = "1.0.40"
+bikecleats_testsuite = { version = "0.0.0", path = "../bikecleats_testsuite" }
+derive_more = "0.99.13"
+futures-util = "0.3.14"
+indicatif = { version = "0.15.0", features = ["improved_unicode", "rayon"] }
+itertools = "0.10.0"
+nom = "6.1.2"
+num_cpus = "1.13.0"
+tempfile = "3.2.0"
+termcolor = "1.1.2"
+tokio = { version = "1.4.0", features = ["fs", "io-util", "process", "rt-multi-thread", "sync", "time"] }
+unicode-width = "0.1.8"
+which = "4.1.0"
