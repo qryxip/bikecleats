@@ -31,7 +31,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: -- --check
+          args: --all -- --check
 
   cargo-udeps:
     name: cargo-udeps
@@ -110,7 +110,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: udeps
-          args: --all-targets
+          args: --workspace --all-targets
           toolchain: nightly-2021-04-10-x86_64-unknown-linux-gnu
 
   build:
@@ -164,13 +164,13 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --all-targets -- -D warnings
+          args: --workspace --all-targets -- -D warnings
 
       - name: cargo-test
         uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --no-fail-fast
+          args: --workspace --no-fail-fast
         env:
           RUST_BACKTRACE: full
 
