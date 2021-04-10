@@ -1,0 +1,15 @@
+[package]
+name = "bikecleats"
+version = "0.0.0"
+edition = "2018"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+license = "MIT OR Apache-2.0"
+description = "Tools for competitive programming."
+repository = "https://github.com/qryxip/bikecleats"
+documentation = "https://docs.rs/bikecleats"
+readme = "README.md"
+keywords = ["cli", "competitive", "atcoder", "codeforces", "yukicoder"]
+categories = ["command-line-utilities"]
+publish = false
+
+[dependencies]
