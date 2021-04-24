@@ -1,0 +1,6 @@
+---
+source: bikecleats_web/tests/login.rs
+expression: outcome
+
+---
+"Success"

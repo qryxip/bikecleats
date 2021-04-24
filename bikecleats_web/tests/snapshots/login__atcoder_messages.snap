@@ -1,0 +1,16 @@
+---
+source: bikecleats_web/tests/login.rs
+expression: messages
+
+---
+OnRequest(GET, "https://atcoder.jp/settings")
+OnResponse(302, Warning)
+CredentialsPrompt("Username: ")
+CredentialsPrompt("Password: ")
+OnRequest(GET, "https://atcoder.jp/login")
+OnResponse(200, Pass)
+OnRequest(POST, "https://atcoder.jp/login")
+OnResponse(302, Pass)
+OnRequest(GET, "https://atcoder.jp/settings")
+OnResponse(200, Pass)
+

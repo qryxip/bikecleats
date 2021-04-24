@@ -11,6 +11,15 @@ keywords = []
 categories = ["command-line-utilities"]
 publish = false
 
+[[test]]
+name = "login"
+path = "tests/login.rs"
+required-features = ["__test_with_credentials"]
+
+[features]
+default = []
+__test_with_credentials = []
+
 [dependencies]
 anyhow = "1.0.40"
 atty = "0.2.14"
@@ -37,9 +46,14 @@ regex = "1.4.6"
 reqwest = { version = "0.11.3", features = ["blocking", "cookies", "json", "rustls-tls", "stream", "trust-dns"] }
 scraper = "0.12.0"
 serde = { version = "1.0.125", features = ["derive"] }
+serde_json = "1.0.64"
 sha2 = "0.9.3"
 strum = { version = "0.20.0", features = ["derive"] }
 tempfile = "3.2.0"
 termcolor = "1.1.2"
 unicode-width = "0.1.8"
 url = "2.2.1"
+
+[dev-dependencies]
+bikecleats_web_test_utils = { path = "../bikecleats_web_test_utils" }
+insta = "1.7.1"

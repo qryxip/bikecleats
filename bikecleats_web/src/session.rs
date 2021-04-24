@@ -1,4 +1,5 @@
 use crate::{
+    outcomes::LoginOutcome,
     platforms::atcoder,
     shell::{CellShell, Shell},
 };
@@ -22,7 +23,7 @@ impl<S: Shell> Session<S> {
     >(
         &self,
         username_and_password: F,
-    ) -> anyhow::Result<()> {
+    ) -> anyhow::Result<LoginOutcome> {
         atcoder::login(&self.blocking_client, &self.shell, username_and_password)
     }
 }

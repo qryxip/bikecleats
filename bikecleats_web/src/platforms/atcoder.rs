@@ -1,4 +1,5 @@
 use crate::{
+    outcomes::LoginOutcome,
     request::{BlockingClientExt as _, BlockingResponseExt},
     shell::Shell,
 };
@@ -14,11 +15,13 @@ pub(crate) fn login(
     client: &reqwest::blocking::Client,
     mut shell: impl Shell,
     username_and_password: impl FnMut(&'static str, &'static str) -> anyhow::Result<(String, String)>,
-) -> anyhow::Result<()> {
-    if !check_logged_in(client, &mut shell)? {
+) -> anyhow::Result<LoginOutcome> {
+    if check_logged_in(client, &mut shell)? {
+        Ok(LoginOutcome::AlreadyLoggedIn)
+    } else {
         ensure_login(client, &mut shell, username_and_password)?;
+        Ok(LoginOutcome::Success)
     }
-    Ok(())
 }
 
 fn check_logged_in(
