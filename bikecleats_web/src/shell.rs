@@ -40,7 +40,7 @@ impl<S: Shell> Shell for &'_ mut S {
 }
 
 pub trait ShellExt: Shell {
-    fn cell(&mut self) -> CellShell<&mut Self> {
+    fn as_cell(&mut self) -> CellShell<&mut Self> {
         CellShell(RefCell::new(self))
     }
 }
