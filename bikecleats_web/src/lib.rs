@@ -8,5 +8,5 @@ mod shell;
 pub use crate::{
     cookies::CookieStorage,
     session::{Session, SessionBuilder},
-    shell::{CellShell, Shell, ShellExt, StatusCodeColor},
+    shell::{CellShell, ColorChoice, Shell, ShellExt, StandardShell, StatusCodeColor},
 };

@@ -13,6 +13,7 @@ publish = false
 
 [dependencies]
 anyhow = "1.0.40"
+atty = "0.2.14"
 camino = "1.0.4"
 chrono = { version = "0.4.19", features = ["serde"] }
 cookie = "0.15.0"
@@ -22,6 +23,7 @@ either = "1.6.1"
 form_urlencoded = "1.0.1"
 fs2 = "0.4.3"
 futures-util = "0.3.14"
+fwdansi = "1.1.0"
 http = "0.2.4"
 indexmap = { version = "1.6.2", features = ["serde-1"] }
 indicatif = { version = "0.15.0", features = ["improved_unicode", "rayon"] }
@@ -31,7 +33,7 @@ nipper = "0.1.9"
 num_cpus = "1.13.0"
 once_cell = "1.7.2"
 percent-encoding = "2.1.0"
-regex = "1.4.5"
+regex = "1.4.6"
 reqwest = { version = "0.11.3", features = ["blocking", "cookies", "json", "rustls-tls", "stream", "trust-dns"] }
 scraper = "0.12.0"
 serde = { version = "1.0.125", features = ["derive"] }
