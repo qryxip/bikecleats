@@ -22,8 +22,7 @@ pub fn run<
     F: FnOnce(&Session<Messages>, &mut C) -> anyhow::Result<O>,
 >(
     perform: F,
-    assert_snapshots: fn(&str, &O),
-) -> anyhow::Result<()> {
+) -> anyhow::Result<(String, O)> {
     let messages = Rc::new(RefCell::default());
     let session = Session::builder()
         .user_agent(USER_AGENT)
@@ -31,15 +30,14 @@ pub fn run<
         .redirect(Policy::none)
         .timeout(TIMEOUT)
         .build(Messages(messages.clone()))?;
-    let outcome = &perform(&{ session }, &mut C::new(&messages)?)?;
-    let messages = &Rc::try_unwrap(messages)
+    let outcome = perform(&{ session }, &mut C::new(&messages)?)?;
+    let messages = Rc::try_unwrap(messages)
         .unwrap()
         .into_inner()
         .iter()
         .map(|m| m.to_string() + "\n")
         .join("");
-    assert_snapshots(messages, outcome);
-    return Ok(());
+    return Ok((messages, outcome));
 
     const USER_AGENT: &str = "https://github.com/qryxip/bikecleats";
     const TIMEOUT: Duration = Duration::from_secs(10);
