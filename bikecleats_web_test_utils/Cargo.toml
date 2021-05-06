@@ -10,7 +10,7 @@ publish = false
 anyhow = "1.0.40"
 bikecleats_web = { path = "../bikecleats_web" }
 http = "0.2.4"
-indicatif = "0.15.0"
+indicatif = "0.16.0"
 itertools = "0.10.0"
 reqwest = { version = "0.11.3", features = ["cookies"] }
 serde = "1.0.125"
