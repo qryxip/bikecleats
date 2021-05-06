@@ -1,5 +1,6 @@
 use crate::{
-    outcomes::LoginOutcome,
+    args::{ProblemsInContest, SystemTestCases},
+    outcomes::{LoginOutcome, ParticipateOutcome, RetrieveTestCasesOutcome},
     platforms::atcoder,
     shell::{CellShell, Shell},
 };
@@ -25,6 +26,40 @@ impl<S: Shell> Session<S> {
         username_and_password: F,
     ) -> anyhow::Result<LoginOutcome> {
         atcoder::login(&self.blocking_client, &self.shell, username_and_password)
+    }
+
+    pub fn atcoder_participate<
+        F: FnMut(&'static str, &'static str) -> anyhow::Result<(String, String)>,
+    >(
+        &self,
+        username_and_password: F,
+        contest: &str,
+    ) -> anyhow::Result<ParticipateOutcome> {
+        atcoder::participate(
+            &self.blocking_client,
+            &self.shell,
+            username_and_password,
+            contest,
+        )
+    }
+
+    pub fn atcoder_retrieve_test_cases<
+        F: FnMut(&'static str, &'static str) -> anyhow::Result<(String, String)>,
+        G: FnMut(&'static str) -> anyhow::Result<String>,
+    >(
+        &self,
+        username_and_password: F,
+        system: SystemTestCases<G>,
+        targets: &ProblemsInContest,
+    ) -> anyhow::Result<RetrieveTestCasesOutcome> {
+        atcoder::retrieve_test_cases(
+            &self.blocking_client,
+            &self.async_client,
+            &self.shell,
+            username_and_password,
+            system,
+            targets,
+        )
     }
 }
 
