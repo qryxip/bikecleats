@@ -1,0 +1,18 @@
+[package]
+name = "bikecleats_web_test_utils"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+license = "MIT OR Apache-2.0"
+edition = "2018"
+publish = false
+
+[dependencies]
+anyhow = "1.0.40"
+bikecleats_web = { path = "../bikecleats_web" }
+http = "0.2.4"
+indicatif = "0.16.0"
+itertools = "0.10.0"
+reqwest = { version = "0.11.3", features = ["cookies"] }
+serde = "1.0.125"
+serde_json = "1.0.64"
+url = "2.2.1"
